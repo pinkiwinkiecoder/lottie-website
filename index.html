@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#151020">
+<meta name="description" content="Lottie — Your friendly Discord server management assistant.">
+<title>Lottie — Your Discord Assistant</title>
+
+<style>
+:root {
+    --background: #151020;
+    --surface: #21182e;
+    --pink: #ff91c8;
+    --purple: #b49aff;
+    --text: #fff5fc;
+    --muted: #bfb0cc;
+    --border: rgba(255,255,255,.09);
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.8;
+    background:
+        radial-gradient(ellipse at 10% 0%, #43213e 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 15%, #30234f 0%, transparent 40%),
+        var(--background);
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.brand {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--pink);
+    letter-spacing: -1px;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+.hero {
+    text-align: center;
+    padding: 90px 24px 70px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px;
+    border-radius: 38px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #ff91c8, #a68aff);
+    box-shadow: 0 0 65px #ff91c833;
+    font-size: 64px;
+    color: white;
+    font-weight: 800;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.eyebrow {
+    color: var(--pink);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(45px, 9vw, 82px);
+    line-height: 1.1;
+    margin: 18px 0;
+    background: linear-gradient(110deg, #fff, #ff91c8, #b49aff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 20px auto 30px;
+    font-size: 18px;
+    color: var(--muted);
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 13px 24px;
+    margin: 6px;
+    border-radius: 14px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: #21152d;
+    transition: transform .2s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button.secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 24px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 70px;
+}
+
+.feature, .legal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 28px;
+}
+
+.feature h3 {
+    color: var(--pink);
+    margin: 8px 0;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.feature-icon {
+    font-size: 28px;
+}
+
+.legal {
+    padding: clamp(24px, 5vw, 48px);
+    margin-bottom: 30px;
+    scroll-margin-top: 25px;
+}
+
+.legal h2 {
+    color: var(--pink);
+    font-size: 32px;
+    margin-top: 0;
+    line-height: 1.3;
+}
+
+.legal h3 {
+    color: var(--purple);
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+.legal p, .legal li {
+    color: var(--muted);
+}
+
+a {
+    color: var(--pink);
+    overflow-wrap: anywhere;
+}
+
+.updated {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.notice {
+    padding: 15px 20px;
+    border-left: 3px solid var(--purple);
+    background: #b49aff0d;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+}
+
+footer strong {
+    color: var(--pink);
+}
+
+footer a {
+    margin: 0 8px;
+}
+
+@media(max-width: 600px) {
+    nav {
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 0 8px;
+    }
+
+    .hero {
+        padding-top: 45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="brand">✦ Lottie</div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#terms">Terms</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#support">Support</a>
+    </div>
+</nav>
+
+<header class="hero" id="home">
+
+    <div class="avatar">
+        <img src="lottie.png" alt="Lottie"
+        onerror="this.parentElement.textContent='L'">
+    </div>
+
+    <div class="eyebrow">Your little management assistant</div>
+
+    <h1>Meet Lottie.</h1>
+
+    <p>
+        A little personality. A lot of management.
+        Lottie helps you manage your Discord community
+        with powerful tools, thoughtful automation
+        and a friendly touch.
+    </p>
+
+    <a class="button" href="#features">Explore Lottie</a>
+    <a class="button secondary" href="#support">Get Support</a>
+
+</header>
+
+<main>
+
+<section class="features" id="features">
+
+    <article class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h3>Moderation</h3>
+        <p>Keep your community organized with moderation tools and case management.</p>
+    </article>
+
+    <article class="feature">
+        <div class="feature-icon">⚙️</div>
+        <h3>Server Management</h3>
+        <p>Helpful tools designed to simplify everyday server management.</p>
+    </article>
+
+    <article class="feature">
+        <div class="feature-icon">✨</div>
+        <h3>TikTok Integration</h3>
+        <p>Connect supported TikTok accounts with your Discord community.</p>
+    </article>
+
+    <article class="feature">
+        <div class="feature-icon">🎁</div>
+        <h3>Gift Tracking</h3>
+        <p>Track supported gifting activity through Lottie's community tools.</p>
+    </article>
+
+</section>
+
+<section class="legal" id="terms">
+
+    <div class="eyebrow">Legal information</div>
+    <h2>Terms of Service</h2>
+    <p class="updated">Draft — November 25, 2026</p>
+
+    <h3>1. Introduction</h3>
+    <p>
+        Lottie is an independently developed Discord application
+        operated under the name Pinki. These Terms govern your
+        use of Lottie and its associated services.
+    </p>
+
+    <h3>2. Eligibility</h3>
+    <p>
+        You must meet Discord's minimum age requirements and
+        comply with applicable laws to use Lottie.
+        Your use must also comply with Discord's Terms of Service
+        and Community Guidelines.
+    </p>
+
+    <h3>3. Acceptable Use</h3>
+    <p>You must not use Lottie to:</p>
+    <ul>
+        <li>Harass, threaten or abuse other users.</li>
+        <li>Distribute spam or malicious content.</li>
+        <li>Exploit bugs or bypass security measures.</li>
+        <li>Access information without authorization.</li>
+        <li>Violate Discord's policies or applicable laws.</li>
+        <li>Disrupt Lottie's operation or infrastructure.</li>
+    </ul>
+
+    <h3>4. Server Administrators</h3>
+    <p>
+        Server administrators are responsible for configuring
+        Lottie's permissions and features appropriately.
+        They must ensure their use of moderation, logging and
+        other management tools complies with applicable laws
+        and respects the rights of community members.
+    </p>
+
+    <h3>5. Third-Party Services</h3>
+    <p>
+        Certain features may interact with Discord, TikTok
+        or other third-party services. These services are
+        governed by their own terms and privacy policies.
+        Lottie is not an official product of Discord or TikTok.
+    </p>
+
+    <h3>6. Availability</h3>
+    <p>
+        Lottie may experience downtime, maintenance,
+        technical errors or feature changes.
+        Continuous availability is not guaranteed.
+    </p>
+
+    <h3>7. Suspension and Termination</h3>
+    <p>
+        Access may be restricted where reasonably necessary
+        to prevent abuse, protect security or comply with
+        applicable legal obligations.
+        Users may stop using Lottie at any time.
+    </p>
+
+    <h3>8. Liability</h3>
+    <p>
+        To the extent permitted by applicable law,
+        Lottie is provided on an as-available basis.
+        Nothing in these Terms excludes or limits liability
+        or consumer rights that cannot lawfully be excluded
+        or limited.
+    </p>
+
+    <h3>9. Changes to These Terms</h3>
+    <p>
+        These Terms may be updated as Lottie's features
+        and legal obligations change. Material changes
+        will be communicated where required by law.
+    </p>
+
+    <h3>10. Contact</h3>
+    <p>
+        Questions regarding these Terms can be sent to
+        <a href="mailto:azizovelias@nexusstagecraft.be">
+        azizovelias@nexusstagecraft.be</a>.
+    </p>
+
+</section>
+
+<section class="legal" id="privacy">
+
+    <div class="eyebrow">Your data matters</div>
+    <h2>Privacy Policy</h2>
+    <p class="updated">Draft — November 25, 2026</p>
+
+    <div class="notice">
+        This policy is currently a draft.
+        Data storage, retention and provider details
+        are being reviewed before final publication.
+    </div>
+
+    <h3>1. Who We Are</h3>
+    <p>
+        Lottie is an independently developed Discord
+        application operated under the name Pinki.
+        Privacy-related inquiries may be directed to
+        <a href="mailto:azizovelias@nexusstagecraft.be">
+        azizovelias@nexusstagecraft.be</a>.
+    </p>
+
+    <h3>2. Information Processed</h3>
+    <p>
+        Depending on the features used, Lottie may
+        process the following categories of information:
+    </p>
+
+    <ul>
+        <li>Discord user identifiers.</li>
+        <li>Discord server identifiers.</li>
+        <li>Moderation records and case information.</li>
+        <li>TikTok account-linking information.</li>
+        <li>Information associated with supported gift-tracking features.</li>
+    </ul>
+
+    <h3>3. Purposes of Processing</h3>
+    <p>Information may be processed to:</p>
+
+    <ul>
+        <li>Provide Discord server management features.</li>
+        <li>Maintain moderation records.</li>
+        <li>Associate supported TikTok accounts with Discord users.</li>
+        <li>Provide gift-tracking functionality.</li>
+        <li>Respond to support and privacy requests.</li>
+    </ul>
+
+    <h3>4. Legal Basis</h3>
+    <p>
+        Where the GDPR applies, personal data must be
+        processed under an appropriate legal basis.
+        The specific legal basis for each processing
+        activity is being assessed and will be documented
+        in the finalized policy.
+    </p>
+
+    <h3>5. Data Storage and Security</h3>
+    <p>
+        Details regarding hosting infrastructure,
+        database providers, storage locations and
+        implemented security measures are currently
+        being reviewed.
+    </p>
+
+    <h3>6. Data Retention</h3>
+    <p>
+        Specific retention periods and deletion
+        procedures for each category of information
+        are currently being reviewed.
+        Users may contact the operator to request
+        information about the retention of their data.
+    </p>
+
+    <h3>7. Third-Party Services</h3>
+    <p>
+        Lottie interacts with Discord and may interact
+        with TikTok when relevant features are used.
+        These platforms have their own privacy policies.
+        Additional service providers, recipients and
+        international data transfer arrangements will
+        be identified in the finalized policy.
+    </p>
+
+    <ul>
+        <li>
+            <a href="https://discord.com/privacy"
+            target="_blank" rel="noopener noreferrer">
+                Discord Privacy Policy
+            </a>
+        </li>
+        <li>
+            <a href="https://www.tiktok.com/legal/"
+            target="_blank" rel="noopener noreferrer">
+                TikTok Legal Information
+            </a>
+        </li>
+    </ul>
+
+    <h3>8. Your Privacy Rights</h3>
+    <p>
+        Depending on applicable law, you may have
+        the right to:
+    </p>
+
+    <ul>
+        <li>Access your personal data.</li>
+        <li>Request correction of inaccurate information.</li>
+        <li>Request deletion of personal data.</li>
+        <li>Request restriction of processing.</li>
+        <li>Object to certain processing activities.</li>
+        <li>Request data portability where applicable.</li>
+        <li>Withdraw consent where processing relies on consent.</li>
+        <li>Lodge a complaint with a supervisory authority.</li>
+    </ul>
+
+    <p>
+        These rights are subject to applicable legal
+        conditions and exceptions.
+    </p>
+
+    <h3>9. Data Deletion Requests</h3>
+    <p>
+        To submit a privacy or deletion request,
+        contact the support email below.
+        Include your Discord user ID and describe
+        the information concerned.
+        Never provide your password or authentication token.
+    </p>
+
+    <a class="button"
+       href="mailto:azizovelias@nexusstagecraft.be?subject=Lottie%20Data%20Deletion%20Request">
+        Request Data Deletion
+    </a>
+
+    <h3>10. Supervisory Authority</h3>
+    <p>
+        Where applicable, users may lodge a complaint
+        with their local data protection authority.
+        Information about the Belgian Data Protection
+        Authority is available at
+        <a href="https://www.dataprotectionauthority.be/">
+            dataprotectionauthority.be
+        </a>.
+    </p>
+
+    <h3>11. Changes to This Policy</h3>
+    <p>
+        This policy may be updated to reflect changes
+        in Lottie's features, processing activities
+        and legal obligations.
+    </p>
+
+    <h3>12. Contact</h3>
+    <p>
+        For privacy questions, contact:
+        <a href="mailto:azizovelias@nexusstagecraft.be">
+            azizovelias@nexusstagecraft.be
+        </a>.
+    </p>
+
+</section>
+
+<section class="legal" id="support">
+
+    <div class="eyebrow">We're here to help</div>
+    <h2>Need a little help?</h2>
+
+    <p>
+        Have a question, found a bug or need help
+        with Lottie? Get in touch!
+    </p>
+
+    <a class="button"
+       href="mailto:azizovelias@nexusstagecraft.be?subject=Lottie%20Support">
+        Contact Support
+    </a>
+
+</section>
+
+</main>
+
+<footer>
+    <strong>✦ Lottie</strong>
+    <p>Your community. Your assistant.</p>
+    <p>
+        <a href="#terms">Terms of Service</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#support">Support</a>
+    </p>
+    <p>© 2026 Lottie · Made with ♡ by <strong>Pinki</strong></p>
+    <p>Not affiliated with Discord or TikTok.</p>
+</footer>
+
+</body>
+</html>
